@@ -1,2 +1,5 @@
 server:
   port: 28080
+auth0:
+  audience : ${auth0ClientID}
+  issuer : ${auth0issuer}
