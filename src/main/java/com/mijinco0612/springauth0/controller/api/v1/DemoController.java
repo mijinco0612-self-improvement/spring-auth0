@@ -15,7 +15,7 @@ public class DemoController {
 
     @ResponseBody
     @GetMapping("/api/v1/private")
-    public String getUsers() {
+    public String privateApi() {
         return "private";
     }
 }
