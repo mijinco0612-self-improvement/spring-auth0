@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <!-- 共通設定 -->
+    <property name="LOG_DIR" value="/var/www/logs" />
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/spring-auth0.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/spring-auth0.log.%d{yyyy-MM-dd}</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} |%t| [%p] %c %msg %n</pattern>
+        </encoder>
+    </appender>
+    <if condition='isDefined("spring.profiles.active")'>
+        <then>
+            <include resource="logback/${spring.profiles.active}.xml"/>
+        </then>
+        <else>
+            <include resource="logback/prd.xml"/>
+        </else>
+    </if>
+</configuration>
